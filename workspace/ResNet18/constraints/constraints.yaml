@@ -8,15 +8,15 @@ mapspace_constraints:
     # the factors of these are 1 anyways, so the order does not really matter
     - target: RegisterFile
       type: temporal
-      permutation: NCPQRSK
+      permutation: NCPQRS
     # intuitive optimization for row stationary
     # -> process a row/col of the output before going to the next one
     - target: GlobalBuffer
       type: temporal
-      permutation: QRSC PNK
+      permutation: QRSC PN
       factors: Q=1 R=1 S=1 P=0
     # intuitive optimization to reduce map space size
     - target: MainMemory
       type: temporal
-      permutation: RSP CNQK
+      permutation: RSP CNQ
       factors: R=1 S=1 P=1
