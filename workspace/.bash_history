@@ -11,3 +11,7 @@ chmod u+x bash_script.sh
 ./bash_script.sh 
 pwd
 exit
+./bash_script.sh 
+exit
+./bash_script.sh 
+exit
