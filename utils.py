@@ -72,16 +72,14 @@ def get_summary_stats(file_path):
 
 def generate_stats_dict(file_path):
     stats_dict = dict()
-    stats_dict["pJ/MACC"] = get_energy_breakdown_from_stats_txt(file_path)
+    stats_dict_pjmacc = {"pJ/MACC " + element: value for element, value in get_energy_breakdown_from_stats_txt(file_path).items()}
     stats_dict["Area"] = get_area_breakdown_from_stats_txt(file_path)
     
     for stat, value in get_summary_stats(file_path).items():
         stats_dict[stat] = value
 
-    return stats_dict
-
-    # Suppress scientific notation
-pd.set_option("display.float_format", lambda x: "%.2f" % x)
+    return stats_dict | stats_dict_pjmacc 
+    
 
 def generate_stats_by_arch(model_output_path, to_csv=False):
     paths = list(Path(model_output_path).iterdir())
