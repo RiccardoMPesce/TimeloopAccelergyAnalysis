@@ -83,15 +83,15 @@ def generate_stats_dict(file_path):
 
 def generate_stats_by_arch(model_output_path, to_csv=False):
     paths = list(Path(model_output_path).iterdir())
-    layers = sorted([int(f.name.replace("output", "")) for f in paths])
+    layers = [int(f.name.replace("output", "")) for f in paths]
 
     df_dict = {}
 
     for path, layer in zip(paths, layers):
-        df_dict[str(layer)] = generate_stats_dict(path / "timeloop-mapper.stats.txt")
+        df_dict[layer] = generate_stats_dict(path / "timeloop-mapper.stats.txt")
 
-    df_table = pd.DataFrame(df_dict).T.fillna(0)
-    df_summary = pd.DataFrame(df_table.sum(axis=0).round(5), columns=["Total"]).T
+    df_table = pd.DataFrame(df_dict).T.fillna(0).sort_index()
+    df_summary = pd.DataFrame(df_table.sum(axis=0).round(5), columns=["Total"]).T.sort_index()
 
     df_summary.loc[:, "Utilization"] = df_table["Utilization"].mode().values[0]
     df_summary.loc[:, "Area"] = df_table["Area"].mode().values[0]
@@ -105,4 +105,10 @@ def generate_stats_by_arch(model_output_path, to_csv=False):
     return df_table, df_summary
 
 def compare_models(output_path):
-    pass
+    comparison_df = pd.DataFrame()
+
+    for path in sorted(Path(output_path).iterdir()):
+        _, summary = generate_stats_by_arch(path)
+        comparison_df = pd.concat([comparison_df, summary.rename(index={"Total": path.name})])
+
+    return comparison_df
