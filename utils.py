@@ -19,7 +19,7 @@ def generate_bash_script():
             Path(f"workspace/ResNet18/output/conf-{arch_name}/").chmod(0o777)
             for i in range(1, 22):
                 Path(f"workspace/ResNet18/output/conf-{arch_name}/output{i}/").mkdir(mode=777, exist_ok=True)
-                cmd = "timeloop-mapper " + arch.replace("workspace/", "") + " ResNet18/arch/components/*.yaml ResNet18/prob/resnet18_layer"+ str(i) + ".yaml ResNet18/mapper/mapper.yaml ResNet18/constraints/*.yaml -o ./ResNet18/output/conf-" + arch_name + "/output" + str(i)
+                cmd = "timeloop-mapper " + arch.replace("workspace/", "") + " ResNet18/arch/components/*.yaml ResNet18/prob/resnet18_layer"+ str(i) + ".yaml ResNet18/mapper/mapper.yaml ResNet18/constraints/*.yaml -o ResNet18/output/conf-" + arch_name + "/output" + str(i)
                 bash_script.write(cmd)
                 bash_script.write("\n\n")
 
@@ -63,25 +63,48 @@ def get_summary_stats(file_path):
     with open(file_path, "r") as f:
         stats = f.read()
         initial_index = stats.index("Utilization:")
-        end_index = stats.index("\n\npJ/MACC")
-        cleaned = [c.replace(":", "") for c in stats[initial_index:end_index + 1].split("\n") if c != ""]
+        end_index = stats.index("pJ/MACC")
+        cleaned = [c.replace(":", "").replace(" =", "") for c in stats[initial_index:end_index].split("\n") if c != ""]
         summary = {s.split()[0]: float(s.split()[1]) for s in cleaned}
         
     return summary
 
 
-def energy_stats(output_path):
-    layer_paths = [f for f in glob.glob(output_path + "/*/" + "timeloop-mapper.stats.txt")]
-    layers = [int(f.replace(output_path, "")
-                .replace("timeloop-mapper.stats.txt", "")
-                .replace("/", "")
-                .replace("output", "")) for f in layer_paths]
+def generate_stats_dict(file_path):
+    stats_dict = dict()
+    stats_dict["pJ/MACC"] = get_energy_breakdown_from_stats_txt(file_path)
+    stats_dict["Area"] = get_area_breakdown_from_stats_txt(file_path)
+    
+    for stat, value in get_summary_stats(file_path).items():
+        stats_dict[stat] = value
 
-    stats = {layer: {"Energy": get_summary_stats(layer_path)["Energy"]} for layer, layer_path in zip(layers, layer_paths)}
-    stats_df = pd.DataFrame(stats).T.sort_index().fillna(0)
+    return stats_dict
 
-    return stats_df, stats_df.sum(axis=0).values.tolist()[0]
+    # Suppress scientific notation
+pd.set_option("display.float_format", lambda x: "%.2f" % x)
 
+def generate_stats_by_arch(model_output_path, to_csv=False):
+    paths = list(Path(model_output_path).iterdir())
+    layers = sorted([int(f.name.replace("output", "")) for f in paths])
 
-def generate_bash_script_by_model(*models):
+    df_dict = {}
+
+    for path, layer in zip(paths, layers):
+        df_dict[str(layer)] = generate_stats_dict(path / "timeloop-mapper.stats.txt")
+
+    df_table = pd.DataFrame(df_dict).T.fillna(0)
+    df_summary = pd.DataFrame(df_table.sum(axis=0).round(5), columns=["Total"]).T
+
+    df_summary.loc[:, "Utilization"] = df_table["Utilization"].mode().values[0]
+    df_summary.loc[:, "Area"] = df_table["Area"].mode().values[0]
+
+    df_summary["Inferences/Second"] = 1000000000 / df_summary["Cycles"].values.tolist()[0]
+
+    if to_csv:
+        df_table.to_csv(Path(model_output_path).name + "_stats.csv")
+        df_summary.to_csv(Path(model_output_path).name + "_summary.csv")
+
+    return df_table, df_summary
+
+def compare_models(output_path):
     pass
