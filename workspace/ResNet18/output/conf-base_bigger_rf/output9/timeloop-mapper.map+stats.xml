@@ -65,13 +65,13 @@
 							<t_>0</t_>
 						</technology>
 						<size>
-							<t_>8</t_>
+							<t_>32</t_>
 						</size>
 						<word_bits>
-							<t_>4</t_>
+							<t_>16</t_>
 						</word_bits>
 						<addr_gen_bits>
-							<t_>3</t_>
+							<t_>5</t_>
 						</addr_gen_bits>
 						<block_size>
 							<t_>1</t_>
@@ -110,21 +110,21 @@
 					<stats_ class_id="16" tracking_level="0" version="0">
 						<keep class_id="17" tracking_level="0" version="0">
 							<PerDataSpace>
-								<item>0</item>
+								<item>1</item>
 								<item>0</item>
 								<item>1</item>
 							</PerDataSpace>
 						</keep>
 						<partition_size class_id="18" tracking_level="0" version="0">
 							<PerDataSpace>
-								<item>0</item>
+								<item>36864</item>
 								<item>0</item>
 								<item>6272</item>
 							</PerDataSpace>
 						</partition_size>
 						<utilized_capacity>
 							<PerDataSpace>
-								<item>0</item>
+								<item>9</item>
 								<item>0</item>
 								<item>1</item>
 							</PerDataSpace>
@@ -145,7 +145,7 @@
 						</utilized_clusters>
 						<reads>
 							<PerDataSpace>
-								<item>0</item>
+								<item>7225344</item>
 								<item>0</item>
 								<item>7219072</item>
 							</PerDataSpace>
@@ -159,14 +159,14 @@
 						</updates>
 						<fills>
 							<PerDataSpace>
-								<item>0</item>
+								<item>258048</item>
 								<item>0</item>
 								<item>802816</item>
 							</PerDataSpace>
 						</fills>
 						<address_generations>
 							<PerDataSpace>
-								<item>0</item>
+								<item>7483392</item>
 								<item>0</item>
 								<item>8028160</item>
 							</PerDataSpace>
@@ -180,30 +180,30 @@
 						</temporal_reductions>
 						<read_bandwidth class_id="19" tracking_level="0" version="0">
 							<PerDataSpace>
-								<item>0.00000000000000000e+00</item>
+								<item>1.00000000000000000e+00</item>
 								<item>0.00000000000000000e+00</item>
 								<item>9.99131944444444420e-01</item>
 							</PerDataSpace>
 						</read_bandwidth>
 						<write_bandwidth>
 							<PerDataSpace>
-								<item>0.00000000000000000e+00</item>
+								<item>3.57142857142857123e-02</item>
 								<item>0.00000000000000000e+00</item>
 								<item>1.11111111111111116e+00</item>
 							</PerDataSpace>
 						</write_bandwidth>
 						<energy_per_access>
 							<PerDataSpace>
+								<item>2.88999999999999979e-01</item>
 								<item>-nan</item>
-								<item>-nan</item>
-								<item>5.80000000000000029e-02</item>
+								<item>2.88999999999999979e-01</item>
 							</PerDataSpace>
 						</energy_per_access>
 						<energy>
 							<PerDataSpace>
+								<item>2.16270028799999971e+06</item>
 								<item>0.00000000000000000e+00</item>
-								<item>0.00000000000000000e+00</item>
-								<item>8.84339456000000006e+05</item>
+								<item>4.40645004799999949e+06</item>
 							</PerDataSpace>
 						</energy>
 						<temporal_reduction_energy>
@@ -541,7 +541,7 @@
 						</utilized_clusters>
 						<reads>
 							<PerDataSpace>
-								<item>28901376</item>
+								<item>1032192</item>
 								<item>161280</item>
 								<item>12744704</item>
 							</PerDataSpace>
@@ -562,7 +562,7 @@
 						</fills>
 						<address_generations>
 							<PerDataSpace>
-								<item>28901376</item>
+								<item>1032192</item>
 								<item>161280</item>
 								<item>12845056</item>
 							</PerDataSpace>
@@ -576,7 +576,7 @@
 						</temporal_reductions>
 						<read_bandwidth>
 							<PerDataSpace>
-								<item>4.00000000000000000e+00</item>
+								<item>1.42857142857142849e-01</item>
 								<item>2.23214285714285719e-02</item>
 								<item>1.76388888888888884e+00</item>
 							</PerDataSpace>
@@ -597,7 +597,7 @@
 						</energy_per_access>
 						<energy>
 							<PerDataSpace>
-								<item>1.84968806400000000e+09</item>
+								<item>6.60602880000000000e+07</item>
 								<item>1.03219200000000000e+07</item>
 								<item>1.63774464000000000e+09</item>
 							</PerDataSpace>
@@ -640,7 +640,7 @@
 							<router_energy></router_energy>
 							<wire_energy></wire_energy>
 							<tile_width>
-								<t_>2.02155879995845105e+01</t_>
+								<t_>2.78913963916434504e+01</t_>
 							</tile_width>
 							<energy_per_hop></energy_per_hop>
 						</specs_>
@@ -674,7 +674,7 @@
 										<item>0</item>
 										<item>0</item>
 										<item>0</item>
-										<item>28901376</item>
+										<item>1032192</item>
 										<item>0</item>
 										<item>0</item>
 										<item>0</item>
@@ -805,7 +805,7 @@
 							<router_energy></router_energy>
 							<wire_energy></wire_energy>
 							<tile_width>
-								<t_>8.19677983765766669e+01</t_>
+								<t_>1.12369390328561011e+02</t_>
 							</tile_width>
 							<energy_per_hop></energy_per_hop>
 						</specs_>
@@ -836,7 +836,7 @@
 									<item>
 										<count>1</count>
 										<item_version>0</item_version>
-										<item>28901376</item>
+										<item>1032192</item>
 									</item>
 									<item>
 										<count>1</count>
@@ -920,7 +920,7 @@
 								<name>RegisterFile &lt;==&gt; MACC</name>
 							</NetworkSpecs>
 							<word_bits>
-								<t_>4</t_>
+								<t_>16</t_>
 							</word_bits>
 							<router_energy></router_energy>
 							<wire_energy></wire_energy>
@@ -1036,7 +1036,7 @@
 <mapping class_id="30" tracking_level="0" version="0">
 	<datatype_bypass_nest>
 		<item class_id="31" tracking_level="0" version="0">
-			<bits>0000000000000100</bits>
+			<bits>0000000000000101</bits>
 		</item>
 		<item>
 			<bits>0000000000000110</bits>

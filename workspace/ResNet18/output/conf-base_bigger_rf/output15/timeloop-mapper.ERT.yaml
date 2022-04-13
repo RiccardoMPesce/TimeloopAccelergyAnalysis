@@ -7,45 +7,45 @@ ERT:
       arguments:
         address_delta: 0
         data_delta: 0
-      energy: 0.002
+      energy: 0.007
     - name: read
       arguments:
         address_delta: 0
         data_delta: 1
-      energy: 0.036
+      energy: 0.145
     - name: read
       arguments:
         address_delta: 1
         data_delta: 0
-      energy: 0.023
+      energy: 0.151
     - name: read
       arguments:
         address_delta: 1
         data_delta: 1
-      energy: 0.058
+      energy: 0.289
     - name: write
       arguments:
         address_delta: 0
         data_delta: 0
-      energy: 0.002
+      energy: 0.007
     - name: write
       arguments:
         address_delta: 0
         data_delta: 1
-      energy: 0.036
+      energy: 0.145
     - name: write
       arguments:
         address_delta: 1
         data_delta: 0
-      energy: 0.023
+      energy: 0.151
     - name: write
       arguments:
         address_delta: 1
         data_delta: 1
-      energy: 0.058
+      energy: 0.289
     - name: idle
       arguments: null
-      energy: 0.002
+      energy: 0.007
   - name: System.Chip.PE[0..15].MACC
     actions:
     - name: mac_random

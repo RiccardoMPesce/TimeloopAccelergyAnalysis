@@ -1,17 +1,19 @@
 
 MainMemory [ Weights:32768 Inputs:93312 Outputs:50176 ] 
 -------------------------------------------------------
-| for M in [0:32)
-|   for C in [0:8)
+| for M in [0:2)
+|   for C in [0:2)
 
-GlobalBuffer [ Weights:128 ] 
-----------------------------
-|     for P in [0:14)
-|       for Q in [0:2) (Spatial-X)
-|         for M in [0:8) (Spatial-X)
+GlobalBuffer [ ] 
+----------------
+|     for M in [0:16)
+|       for P in [0:14)
+|         for C in [0:32)
+|           for Q in [0:2) (Spatial-X)
+|             for M in [0:8) (Spatial-X)
 
-RegisterFile [ Outputs:7 ] 
---------------------------
-|           for Q in [0:7)
-|             for C in [0:16)
+RegisterFile [ Weights:2 Outputs:7 ] 
+------------------------------------
+|               for Q in [0:7)
+|                 for C in [0:2)
 

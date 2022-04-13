@@ -12,8 +12,8 @@ GlobalBuffer [ Inputs:108 ]
 |           for M in [0:4) (Spatial-X)
 |             for C in [0:4) (Spatial-X)
 
-RegisterFile [ Outputs:2 ] 
---------------------------
+RegisterFile [ Weights:18 Outputs:2 ] 
+-------------------------------------
 |               for S in [0:3)
 |                 for R in [0:3)
 |                   for M in [0:2)

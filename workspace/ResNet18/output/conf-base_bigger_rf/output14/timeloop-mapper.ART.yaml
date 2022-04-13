@@ -2,7 +2,7 @@ ART:
   version: 0.3
   tables:
   - name: System.Chip.PE[0..15].RegisterFile
-    area: 76.42
+    area: 445.68
   - name: System.Chip.PE[0..15].MACC
     area: 332.25
   - name: System.MainMemory

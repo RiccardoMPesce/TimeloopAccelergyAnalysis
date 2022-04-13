@@ -28,9 +28,9 @@ architecture:
         - name: RegisterFile
           class: regfile
           attributes:
-            depth: 8
-            width: 4
-            word-bits: 4
+            depth: 32
+            width: 16
+            word-bits: 16
             block-size: 1
         - name: MACC
           class: intmac

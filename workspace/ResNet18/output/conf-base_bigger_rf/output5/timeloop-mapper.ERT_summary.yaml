@@ -4,15 +4,15 @@ ERT_summary:
   - name: System.Chip.PE[0..15].RegisterFile
     actions:
     - name: read
-      average_energy: 0.03
-      max_energy: 0.058
-      min_energy: 0.002
+      average_energy: 0.148
+      max_energy: 0.289
+      min_energy: 0.007
     - name: write
-      average_energy: 0.03
-      max_energy: 0.058
-      min_energy: 0.002
+      average_energy: 0.148
+      max_energy: 0.289
+      min_energy: 0.007
     - name: idle
-      energy: 0.002
+      energy: 0.007
     primitive_estimation(s):
     - name: System.Chip.PE[0..15].RegisterFile
       estimator: Aladdin_table

@@ -5,12 +5,12 @@ architecture:
     class: regfile
     attributes:
       block-size: 1
-      depth: 8
+      depth: 32
       latency: 5ns
       n_ports: 2
       technology: 45nm
-      width: 4
-      word-bits: 4
+      width: 16
+      word-bits: 16
   - name: System.Chip.PE[0..15].MACC
     class: intmac
     attributes:
