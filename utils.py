@@ -90,8 +90,8 @@ def generate_stats_by_arch(model_output_path, to_csv=False):
     for path, layer in zip(paths, layers):
         df_dict[layer] = generate_stats_dict(path / "timeloop-mapper.stats.txt")
 
-    df_table = pd.DataFrame(df_dict).T.fillna(0).sort_index()
-    df_summary = pd.DataFrame(df_table.sum(axis=0).round(5), columns=["Total"]).T.sort_index()
+    df_table = pd.DataFrame(df_dict).T.fillna(0.00).sort_index()
+    df_summary = pd.DataFrame(df_table.sum(axis=0).round(5), columns=["Total"]).T.fillna(0.00).sort_index()
 
     df_summary.loc[:, "Utilization"] = df_table["Utilization"].mode().values[0]
     df_summary.loc[:, "Area"] = df_table["Area"].mode().values[0]
