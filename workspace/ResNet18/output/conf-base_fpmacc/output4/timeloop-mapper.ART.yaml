@@ -1,0 +1,11 @@
+ART:
+  version: 0.3
+  tables:
+  - name: System.Chip.PE[0..15].RegisterFile
+    area: 187.84
+  - name: System.Chip.PE[0..15].MACC
+    area: 4120.0
+  - name: System.MainMemory
+    area: 1
+  - name: System.Chip.GlobalBuffer
+    area: 180.0

@@ -109,6 +109,6 @@ def compare_models(output_path):
 
     for path in sorted(Path(output_path).iterdir()):
         _, summary = generate_stats_by_arch(path)
-        comparison_df = pd.concat([comparison_df, summary.rename(index={"Total": path.name})])
+        comparison_df = pd.concat([comparison_df, summary.rename(index={"Total": path.name})]).fillna(0)
 
     return comparison_df
