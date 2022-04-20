@@ -39,3 +39,10 @@ timeloop-mapper ResNet18/arch/base_bigger_rf.yaml ResNet18/arch/components/*.yam
 timeloop-mapper ResNet18/arch/base_bigger_rf.yaml ResNet18/arch/components/*.yaml ResNet18/prob/resnet18_layer21.yaml ResNet18/mapper/mapper.yaml ResNet18/constraints/*.yaml -o ./ResNet18/output/conf-base_bigger_rf/output21
 mail
 exit
+./bash_script_2.sh 
+chmod -R 777 .
+./bash_script_2.sh 
+./bash_script_2.sh 
+chmod -R 777 .
+./bash_script_2.sh 
+exit
